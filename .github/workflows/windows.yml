@@ -1,0 +1,63 @@
+name: Windows app
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+    paths-ignore: ['analysis/**', '**/*.md']
+permissions:
+  contents: read
+jobs:
+  windows:
+    runs-on: windows-2022
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - uses: dtolnay/rust-toolchain@stable
+        with:
+          targets: x86_64-pc-windows-msvc
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Frontend tests
+        run: |
+          npm ci
+          npm test
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          npm run check
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Core and report tests
+        run: |
+          cargo test --locked --no-default-features --test core --test csv_import --test reports --test display_settings --test web_control --test web_sessions --test games2026
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+      - name: Build Windows installer
+        shell: pwsh
+        run: ./tools/package-windows.ps1
+      - name: Smoke test 32-bit controller helper (discovery only)
+        shell: pwsh
+        run: |
+          $driver = (Resolve-Path ./assets/v5field-windows.so).Path
+          $reply = 'count' | & ./native/v5-bridge.exe $driver
+          if ($LASTEXITCODE -ne 0) { throw 'Controller library did not load' }
+          $record = $reply | Where-Object { $_ -like 'TMRS *' } | Select-Object -First 1
+          if (!$record) { throw 'Controller helper did not respond' }
+          $result = $record.Substring(5) | ConvertFrom-Json
+          if (!$result.ok) { throw 'Controller discovery failed' }
+      - name: Smoke test PDF exporter
+        shell: pwsh
+        run: |
+          $html = '<!doctype html><meta charset="utf-8"><h1>PDF export check</h1><table><tr><td>1A</td><td>2A</td></tr></table>'
+          $out = Join-Path $env:RUNNER_TEMP 'report-smoke.pdf'
+          $html | & ./native/report-pdf-win/report-pdf.exe $out portrait
+          if ($LASTEXITCODE -ne 0) { throw 'PDF helper failed' }
+          $bytes = [System.IO.File]::ReadAllBytes($out)
+          if ([System.Text.Encoding]::ASCII.GetString($bytes, 0, 5) -ne '%PDF-') { throw 'Invalid PDF output' }
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Tournament-Manager-Windows-x64
+          path: dist/windows/*-setup.exe
+          if-no-files-found: error
+          retention-days: 30

@@ -1,0 +1,182 @@
+
+outputs/地上捡的/v5field-windows.so:	file format coff-i386
+Characteristics 0x230e
+	executable
+	line numbers stripped
+	symbols stripped
+	32 bit words
+	debugging information removed
+	DLL
+
+Time/Date               Thu Jan  1 08:00:00 1970
+Magic                   010b	(PE32)
+MajorLinkerVersion      2
+MinorLinkerVersion      30
+SizeOfCode              002d9200
+SizeOfInitializedData   005d2a00
+SizeOfUninitializedData 00028a00
+AddressOfEntryPoint     00001400
+BaseOfCode              00001000
+BaseOfData              002db000
+ImageBase               67500000
+SectionAlignment        00001000
+FileAlignment           00000200
+MajorOSystemVersion     6
+MinorOSystemVersion     1
+MajorImageVersion       1
+MinorImageVersion       0
+MajorSubsystemVersion   6
+MinorSubsystemVersion   1
+Win32Version            00000000
+SizeOfImage             00602000
+SizeOfHeaders           00000400
+CheckSum                005dd5e0
+Subsystem               00000003	(Windows CUI)
+DllCharacteristics      00008140
+					DYNAMIC_BASE
+					NX_COMPAT
+					TERMINAL_SERVER_AWARE
+SizeOfStackReserve      00200000
+SizeOfStackCommit       00001000
+SizeOfHeapReserve       00100000
+SizeOfHeapCommit        00001000
+LoaderFlags             00000000
+NumberOfRvaAndSizes     00000010
+
+The Data Directory
+Entry 0 005db000 0000019a Export Directory [.edata (or where ever we found it)]
+Entry 1 005dc000 00000960 Import Directory [parts of .idata]
+Entry 2 00000000 00000000 Resource Directory [.rsrc]
+Entry 3 00000000 00000000 Exception Directory [.pdata]
+Entry 4 00000000 00000000 Security Directory
+Entry 5 005df000 00022678 Base Relocation Directory [.reloc]
+Entry 6 00000000 00000000 Debug Directory
+Entry 7 00000000 00000000 Description Directory
+Entry 8 00000000 00000000 Special Directory
+Entry 9 005de004 00000018 Thread Storage Directory [.tls]
+Entry a 00000000 00000000 Load Configuration Directory
+Entry b 00000000 00000000 Bound Import Directory
+Entry c 005dc178 0000013c Import Address Table Directory
+Entry d 00000000 00000000 Delay Import Directory
+Entry e 00000000 00000000 CLR Runtime Header
+Entry f 00000000 00000000 Reserved
+TLS directory:
+  StartAddressOfRawData: 0x67ade000
+  EndAddressOfRawData: 0x67ade01c
+  AddressOfIndex: 0x67ada8ac
+  AddressOfCallBacks: 0x67add018
+  SizeOfZeroFill: 0
+  Characteristics: 0
+  Alignment: 0
+
+
+The Import Tables:
+  lookup 005dc03c time 00000000 fwd 00000000 name 005dc8fc addr 005dc178
+
+    DLL Name: KERNEL32.dll
+    Hint/Ord  Name
+          15  AddVectoredExceptionHandler
+          84  CloseHandle
+         133  CreateEventA
+         152  CreateIoCompletionPort
+         184  CreateThread
+         197  CreateWaitableTimerExW
+         213  DeleteCriticalSection
+         236  DuplicateHandle
+         241  EnterCriticalSection
+         284  ExitProcess
+         357  FreeEnvironmentStringsW
+         434  GetConsoleMode
+         454  GetCurrentProcess
+         455  GetCurrentProcessId
+         459  GetCurrentThreadId
+         480  GetEnvironmentStringsW
+         483  GetErrorMode
+         517  GetLastError
+         583  GetProcAddress
+         584  GetProcessAffinityMask
+         611  GetQueuedCompletionStatusEx
+         616  GetStdHandle
+         627  GetSystemDirectoryA
+         631  GetSystemInfo
+         637  GetSystemTimeAsFileTime
+         651  GetThreadContext
+         665  GetTickCount
+         749  InitializeCriticalSection
+         808  LeaveCriticalSection
+         813  LoadLibraryExW
+         814  LoadLibraryW
+         894  PostQueuedCompletionStatus
+         920  QueryPerformanceCounter
+         932  RaiseFailFastException
+         988  ResumeThread
+        1015  SetConsoleCtrlHandler
+        1058  SetErrorMode
+        1059  SetEvent
+        1099  SetProcessPriorityBoost
+        1115  SetThreadContext
+        1133  SetUnhandledExceptionFilter
+        1140  SetWaitableTimer
+        1146  Sleep
+        1154  SuspendThread
+        1156  SwitchToThread
+        1160  TerminateProcess
+        1165  TlsAlloc
+        1167  TlsGetValue
+        1180  UnhandledExceptionFilter
+        1203  VirtualAlloc
+        1208  VirtualFree
+        1212  VirtualProtect
+        1215  VirtualQuery
+        1222  WaitForMultipleObjects
+        1224  WaitForSingleObject
+        1234  WerGetFlags
+        1238  WerSetFlags
+        1267  WriteConsoleW
+        1268  WriteFile
+
+  lookup 005dc12c time 00000000 fwd 00000000 name 005dc954 addr 005dc268
+
+    DLL Name: msvcrt.dll
+    Hint/Ord  Name
+          56  __dllonexit
+         143  _amsg_exit
+         155  _beginthread
+         209  _errno
+         306  _initterm
+         310  _iob
+         407  _lock
+         564  _onexit
+         704  _unlock
+         956  calloc
+         981  fprintf
+         987  free
+         996  fwrite
+        1040  malloc
+        1086  strlen
+        1088  strncmp
+         788  abort
+        1139  vfprintf
+
+Export Table:
+ DLL name: v5field-windows.so
+ Ordinal base: 1
+ Ordinal      RVA  Name
+       1 0x2d8830  Auto
+       2 0x2d8730  Close
+       3 0x2d8690  Count
+       4 0x2d87b0  Disable
+       5 0x2d87f0  Enable
+       6 0x2d8b10  Free
+       7 0x2d8a70  GetStatus
+       8 0x2d8770  Idle
+       9 0x2d86e0  New
+      10 0x2d8870  SetActive
+      11 0x2d8910  SetClock
+      12 0x2d8ac0  SetControlStatusCallback
+      13 0x2d8970  SetEvent
+      14 0x2d89c0  SetFieldID
+      15 0x2d8650  SetLogHost
+      16 0x2d8a10  SetMatchName
+      17 0x2d88c0  SetTimer
+      18 0x5da8e8  _cgo_dummy_export

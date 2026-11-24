@@ -1,0 +1,1 @@
+{"name":"tournament-manager-gui","private":true,"type":"module","scripts":{"test":"node --test tests/frontend/*.test.mjs","check":"node --check frontend/app.js && node --check frontend/displays.js"},"devDependencies":{"happy-dom":"^21.0.4"}}

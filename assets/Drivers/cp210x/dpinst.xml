@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<dpinst>
+<language code="0x0409">
+<dpinstTitle>VEX Field Controller Driver Installer</dpinstTitle>
+<welcomeTitle>Welcome to the VEX Field Controller Driver Installer</welcomeTitle>
+<welcomeIntro>This wizard will help you install the drivers for your VEX Field Controller device.</welcomeIntro>
+<eula type="txt" path="Silabs_License_Agreement.txt"/>
+<finishTitle>Completing the Installation of the VEX Field Controller Driver</finishTitle>
+</language>
+</dpinst>

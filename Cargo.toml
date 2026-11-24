@@ -1,0 +1,60 @@
+[package]
+name = "tournament-manager-rs"
+version = "0.3.0"
+edition = "2024"
+
+default-run = "tournament-manager-rs"
+autobins = false
+
+[[bin]]
+name = "tournament-manager-rs"
+path = "src/main.rs"
+required-features = ["tauri-gui"]
+
+[[bin]]
+name = "tmrs"
+path = "src/bin/tmrs.rs"
+
+[[bin]]
+name = "tmrs-egui-legacy"
+path = "legacy/egui-main.rs"
+required-features = ["legacy-egui"]
+
+[features]
+default = ["tauri-gui", "custom-protocol"]
+tauri-gui = ["dep:tauri", "dep:tauri-build"]
+custom-protocol = ["tauri/custom-protocol"]
+legacy-egui = ["dep:eframe"]
+
+[build-dependencies]
+tauri-build = { version = "2", optional = true }
+
+[dependencies]
+tauri = { version = "2", optional = true, features = [] }
+eframe = { version = "0.33", default-features = false, optional = true, features = ["glow", "default_fonts", "x11", "wayland"] }
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+rusqlite = { version = "0.37", features = ["bundled", "backup"] }
+csv = "1"
+rand = "0.9"
+rfd = "0.15"
+anyhow = "1"
+argon2 = "0.5.3"
+image = {version="0.25",default-features=false,features=["png","jpeg"]}
+base64 = "0.22"
+chrono = {version="0.4.45",default-features=false,features=["clock"]}
+
+[profile.dev]
+opt-level = 1
+debug = 0
+incremental = false
+
+[profile.test]
+opt-level = 1
+debug = 0
+incremental = false
+
+[profile.release]
+strip = true
+lto = "thin"
+codegen-units = 1

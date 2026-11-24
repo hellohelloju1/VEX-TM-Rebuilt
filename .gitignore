@@ -1,0 +1,11 @@
+/target/
+/dist/
+/node_modules/
+.DS_Store
+/native/report-pdf-win/
+/native/windows-pdf/bin/
+/native/windows-pdf/obj/
+/icons/
+
+/native/v5-bridge.exe
+/native/v5-bridge.obj

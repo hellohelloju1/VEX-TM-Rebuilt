@@ -1,0 +1,38 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "productName": "Tournament Manager Rust",
+  "version": "0.3.0",
+  "identifier": "local.tmrs.proof-of-concept",
+  "build": {
+    "frontendDist": "frontend"
+  },
+  "app": {
+    "withGlobalTauri": true,
+    "windows": [
+      {
+        "label": "main",
+        "title": "Tournament Manager",
+        "width": 1240,
+        "height": 860,
+        "minWidth": 960,
+        "minHeight": 640
+      }
+    ],
+    "security": {
+      "csp": "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; connect-src ipc: http://ipc.localhost"
+    }
+  },
+  "bundle": {
+    "active": true,
+    "targets": [
+      "app"
+    ],
+    "macOS": {
+      "minimumSystemVersion": "12.0",
+      "infoPlist": "native/Info.plist"
+    },
+    "icon": [
+      "assets/v5.png"
+    ]
+  }
+}

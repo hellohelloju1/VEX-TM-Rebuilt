@@ -1,0 +1,28 @@
+{
+  "bundle": {
+    "targets": [
+      "nsis"
+    ],
+    "resources": {
+      "native/report-pdf-win/report-pdf.exe": "report-pdf.exe",
+      "frontend/fonts/ReadexPro.ttf": "ReadexPro.ttf",
+      "frontend/fonts/OFL.txt": "font-OFL.txt",
+      "assets/Sounds/": "Sounds/",
+      "assets/Drivers/": "Drivers/",
+      "assets/v5field-windows.so": "v5field-windows.so",
+      "native/v5-bridge.exe": "v5-bridge.exe"
+    },
+    "icon": [
+      "icons/icon.ico"
+    ],
+    "windows": {
+      "webviewInstallMode": {
+        "type": "downloadBootstrapper",
+        "silent": true
+      },
+      "nsis": {
+        "installMode": "currentUser"
+      }
+    }
+  }
+}

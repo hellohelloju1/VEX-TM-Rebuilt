@@ -1,0 +1,17 @@
+{
+  "assets/Drivers/msvc/vcredist_x86.exe": "c6a7e484f4d84883bc1205bccea3114c0521025712922298ede9b2a1cd632357",
+  "assets/Drivers/cp210x/slabvcp.cat": "30c4ff381003971c4e6a3143e1a4da670ed0798d619faee5381553be9a9315d4",
+  "assets/Drivers/cp210x/Silabs_License_Agreement.txt": "58c59ec3ce9b5576a9ed7f12f5a84062816531be31836a95b33b1de0a159d309",
+  "assets/Drivers/cp210x/ReleaseNotes.txt": "197bf72e029c750469915a67b967629c9224f3f6f9adae12a9f26841dff6870f",
+  "assets/Drivers/cp210x/DriverInstaller_x64.exe": "cdd0b13eefadc1ad1fd815d188c377671c46a6822ee95590aca19f83b112c5f5",
+  "assets/Drivers/cp210x/dpinst.xml": "80a6e13f7fc08a696f21fe110c66d00eb79a4bbc1fc29750457ebc60b4df439f",
+  "assets/Drivers/cp210x/slabvcp.inf": "214d5abada5c39155094afcc4ae4e67079811dc53bd26eb1adf781459046012b",
+  "assets/Drivers/cp210x/DriverInstaller_x86.exe": "cf2910e87e064c5b1beec56c6603750bbb579548bafe8b30095920de2f9b4a30",
+  "assets/Drivers/cp210x/x64/WdfCoInstaller01009.dll": "18487b4ff94edccc98ed59d9fca662d4a1331c5f1e14df8db3093256dd9f1c3e",
+  "assets/Drivers/cp210x/x64/silabser.sys": "1865671d27dc18bf17431c3259ea29b18431b8b78c8b15adb6c63d3da3c7d1ef",
+  "assets/Drivers/cp210x/x64/silabenm.sys": "ee85e8d3cf3819db28221bfc103de8df0e14e1878cecf54e8cd8c161b0e0af3c",
+  "assets/Drivers/cp210x/x86/WdfCoInstaller01009.dll": "7a6bf1f950684381205c717a51af2d9c81b203cb1f3db0006a4602e2df675c77",
+  "assets/Drivers/cp210x/x86/silabser.sys": "37c72cd570603a37c308763ec6114e677c8dd0e5cb97481e40b818ab3896c724",
+  "assets/Drivers/cp210x/x86/silabenm.sys": "90a1aa6372356046b28c079954458f42849779ffc48c93af0549a7673b276eb3",
+  "assets/v5field-windows.so": "e4a842578d3c5fb35f0b3b7363e2be4afede5f0ccf3ffad4332ed66752d7d57e"
+}
