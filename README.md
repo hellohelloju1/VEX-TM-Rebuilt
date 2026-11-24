@@ -1,5 +1,7 @@
 # Tournament Manager — Tauri / Rust proof of concept
 
+For Windows builds and the supplied Windows drivers, see [WINDOWS.md](WINDOWS.md).
+
 The desktop GUI uses **Tauri 2** with a local HTML/CSS/JavaScript interface. Scoring, scheduling, rankings, brackets, passwords, SQLite storage, and V5 hardware control remain in Rust. New tournaments use **2026/2027 VEX IQ Level Up** and **VEX V5 Override**, decoded from the supplied `.tmg2` definitions (Level Up v1 and Override v2). The 2025/2026 rules remain embedded for existing tournament files.
 
 ## Run
