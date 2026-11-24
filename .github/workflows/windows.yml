@@ -7,7 +7,29 @@ on:
 permissions:
   contents: read
 jobs:
+  driver:
+    runs-on: windows-2022
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build 32-bit helper
+        shell: pwsh
+        run: ./tools/build-v5-helper.ps1
+      - name: Smoke test 32-bit controller helper (discovery only)
+        shell: pwsh
+        run: |
+          $driver = (Resolve-Path ./assets/v5field-windows.so).Path
+          $reply = 'count' | & ./native/v5-bridge.exe $driver
+          $helperExit = $LASTEXITCODE
+          $reply | Write-Host
+          Write-Host "Controller helper exit: $helperExit"
+          if ($helperExit -ne 0) { throw 'Controller library did not load' }
+          $record = $reply | Where-Object { $_ -like 'TMRS *' } | Select-Object -First 1
+          if (!$record) { throw 'Controller helper did not respond' }
+          $result = $record.Substring(5) | ConvertFrom-Json
+          if (!$result.ok) { throw 'Controller discovery failed' }
   windows:
+    needs: driver
     runs-on: windows-2022
     timeout-minutes: 60
     steps:
@@ -37,19 +59,11 @@ jobs:
           cargo test --locked --no-default-features --test core --test csv_import --test reports --test display_settings --test web_control --test web_sessions --test games2026
           if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Build Windows installer
+        id: package
         shell: pwsh
         run: ./tools/package-windows.ps1
-      - name: Smoke test 32-bit controller helper (discovery only)
-        shell: pwsh
-        run: |
-          $driver = (Resolve-Path ./assets/v5field-windows.so).Path
-          $reply = 'count' | & ./native/v5-bridge.exe $driver
-          if ($LASTEXITCODE -ne 0) { throw 'Controller library did not load' }
-          $record = $reply | Where-Object { $_ -like 'TMRS *' } | Select-Object -First 1
-          if (!$record) { throw 'Controller helper did not respond' }
-          $result = $record.Substring(5) | ConvertFrom-Json
-          if (!$result.ok) { throw 'Controller discovery failed' }
       - name: Smoke test PDF exporter
+        if: always() && steps.package.outcome == 'success'
         shell: pwsh
         run: |
           $html = '<!doctype html><meta charset="utf-8"><h1>PDF export check</h1><table><tr><td>1A</td><td>2A</td></tr></table>'
